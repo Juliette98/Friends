@@ -1,4 +1,4 @@
-package stepDefinitions;
+package stepDefinitions.friends;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
