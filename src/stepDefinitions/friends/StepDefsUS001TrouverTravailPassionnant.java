@@ -1,6 +1,5 @@
 package stepDefinitions.friends;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -23,7 +22,7 @@ public class StepDefsUS001TrouverTravailPassionnant {
     @Given("^la passion comprend \"([^\"]*)\" de \"([^\"]*)\"$")
     public void affecterPassion(String arg1, String arg2) {
         Assert.assertEquals(this.passion.getIntitule(), arg1);
-        Assert.assertEquals(this.passion.getFriend().getNom(),arg2);
+        Assert.assertEquals(this.passion.getColocataire().getNom(),arg2);
     }
 
     @Given("^un caractéristique d'un travail \"([^\"]*)\"$")
@@ -31,7 +30,7 @@ public class StepDefsUS001TrouverTravailPassionnant {
         this.caractereTravail1 = arg1;
     }
 
-    @When("^un Friend trouve un travail qui fait partie de sa passion$")
+    @When("^ce Friend trouve un travail qui fait partie de sa passion$")
     public void trouverUnTravailPassionnant(){
         Assert.assertEquals(this.caractereTravail1, this.passion.getIntitule());
     }

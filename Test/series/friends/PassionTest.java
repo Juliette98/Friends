@@ -5,10 +5,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class PassionTest
-{
+public class PassionTest {
     private Friend monica;
     private Friend rachel;
+    private Friend joey;
     private Passion cuisine;
     private Passion laMode;
 
@@ -22,6 +22,7 @@ public class PassionTest
     {
         monica = new Friend("monica");
         rachel = new Friend("rachel");
+        joey = new Friend("joey");
         cuisine = new Passion(monica, "cuisine");
         laMode = new Passion(rachel, "la mode");
         monica.devenirColocataire(rachel);
@@ -50,6 +51,18 @@ public class PassionTest
         Assert.assertEquals("rachel qui est passioné(e) de la mode est colocataire avec monica"
                 , laMode.connaitreColocataire());
     }
+
+    @Test
+    public void testCopy()
+    {
+        Passion passionJoey = new Passion(joey,"aller au Central Perk");
+        Passion passion2Joey = (Passion) passionJoey.copy();
+        passion2Joey.setIntitule("manger du sandwich");
+
+        Assert.assertEquals("manger du sandwich", passion2Joey.getIntitule());
+        Assert.assertEquals("aller au Central Perk", passionJoey.getIntitule());
+    }
+
 }
 
 

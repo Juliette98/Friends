@@ -1,15 +1,16 @@
 package series.friends;
 
+import fusion.Colocataire;
+
 import java.util.ArrayList;
 
-public class Friend {
+public class Friend implements Colocataire {
 
     private String nom;
 
-    private Friend colocataire;
+    private Colocataire colocataire;
 
     private ArrayList<Passion> passions;
-
 
     /**
      * Constructeur d'objets de classe Friend
@@ -23,47 +24,54 @@ public class Friend {
 
     }
 
+    @Override
     public String getNom(){
         return this.nom;
     }
 
+    @Override
     public void setNom(String nom){
         this.nom = nom;
     }
 
-    public Friend getColocataire(){
+    @Override
+    public Colocataire getColocataire(){
         return this.colocataire;
     }
 
-    public void setColocataire(Friend colocataire){
+    @Override
+    public void setColocataire(Colocataire colocataire){
         this.colocataire = colocataire;
     }
 
-    public ArrayList getPassion(){
+    @Override
+    public ArrayList <Passion> getPassion(){
         return this.passions;
     }
 
+    @Override
     public void setPassion(ArrayList passions){
         this.passions = passions;
     }
 
-    public String devenirColocataire(Friend friend){
+    @Override
+    public String devenirColocataire(Colocataire friend){
         devenirColocataireExtracted(friend);
 
-        return this.nom + " est devenu(e) colocataire avec " + friend.nom;
+        return this.nom + " est devenu(e) colocataire avec " + friend.getNom();
     }
 
-    private void devenirColocataireExtracted(Friend friend) {
-        if(friend.colocataire != null){
-            friend.colocataire.colocataire = null;
+    private void devenirColocataireExtracted(Colocataire friend) {
+        if(friend.getColocataire() != null){
+            friend.getColocataire().setColocataire(null);
         }
         if(this.colocataire != null){
-            this.colocataire.colocataire = null;
+            this.colocataire.setColocataire(null);
         }
         this.colocataire = friend;
-        friend.colocataire = this;
+        friend.setColocataire(this);
     }
-
+    @Override
     public void addPassion(Passion passion) {
         this.passions.add(passion);
     }

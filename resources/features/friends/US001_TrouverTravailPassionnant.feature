@@ -10,7 +10,7 @@ Feature: US001 Trouver un travail passionnant
     Given une passion
     And la passion comprend <int1> de <friend1>
     And un caractéristique d'un travail <car1>
-    When un Friend trouve un travail qui fait partie de sa passion
+    When ce Friend trouve un travail qui fait partie de sa passion
     Then le Friend aura un nouveau travail <travail>
 
     Examples:

@@ -1,22 +1,33 @@
 package series.friends;
 
-public class Passion {
+import fusion.Colocataire;
+import fusion.PassionPrototype;
+
+public class Passion extends PassionPrototype {
 
     private String intitule;
 
-    private Friend friend;
+    private Colocataire colocataire;
 
     /**
      * Constructeur d'objets de classe Passion
      */
-    public Passion(Friend friend, String intitule)
+    public Passion(Colocataire colocataire, String intitule)
     {
-        this.friend = friend;
+        this.colocataire = colocataire;
         this.intitule = intitule;
     }
 
-    public Friend getFriend() {
-        return friend;
+    public Colocataire getColocataire() {
+        return colocataire;
+    }
+
+    public void setIntitule(String intitule) {
+        this.intitule = intitule;
+    }
+
+    public void setColocataire(Colocataire colocataire) {
+        this.colocataire = colocataire;
     }
 
     public String getIntitule() {
@@ -24,13 +35,18 @@ public class Passion {
     }
 
     public String toString(){
-        return friend.getNom() + " est passionné(e) de " + this.intitule;
+        return colocataire.getNom() + " est passionné(e) de " + this.intitule;
     }
 
     public String connaitreColocataire(){
-        if(friend.getColocataire() != null)
-            return friend.getNom() + " qui est passioné(e) de " + this.intitule + " est colocataire avec "
-                    + friend.getColocataire().getNom();
-        return friend.getNom() + " qui est passioné(e) de " + this.intitule + " n'a pas de colocataire";
+        if(colocataire.getColocataire() != null)
+            return colocataire.getNom() + " qui est passioné(e) de " + this.intitule + " est colocataire avec "
+                    + colocataire.getColocataire().getNom();
+        return colocataire.getNom() + " qui est passioné(e) de " + this.intitule + " n'a pas de colocataire";
+    }
+
+    @Override
+    public PassionPrototype copy() {
+        return new Passion(this.colocataire, this.intitule);
     }
 }
